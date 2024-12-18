@@ -17,11 +17,15 @@ class DotParser {
       final dateCode = match.group(2)!;    // WWYY (4 Ziffern)
 
       // Week Code und Year Code extrahieren
-      final weekCode = int.tryParse(dateCode.substring(0, 2));
-      final yearCode = int.tryParse("20${dateCode.substring(2, 4)}");
+      int? weekCode = int.tryParse(dateCode.substring(0, 2));
+      int? yearCode = int.tryParse(dateCode.substring(2, 4));
+
+      if (yearCode != null) {
+        yearCode += 2000;
+      }
 
       // Validierung: Produktionswoche muss zwischen 1 und 52 liegen
-      if (weekCode == null || weekCode < 1 || weekCode > 52) {
+      if (weekCode != null && (weekCode < 1 || weekCode > 52)) {
         return null; // Ungültiger Week Code
       }
 
@@ -33,7 +37,7 @@ class DotParser {
         dotCode: dotCode,
         plantCode: plantCode,
         weekCode: weekCode,
-        yearCode: yearCode!,
+        yearCode: yearCode,
         company: company,
       );
     }
@@ -44,8 +48,8 @@ class DotParser {
 class TireDot {
   final String dotCode;
   final String plantCode;
-  final int weekCode;
-  final int yearCode;
+  final int? weekCode;
+  final int? yearCode;
   final TireCompany? company;
 
   TireDot({
@@ -55,15 +59,4 @@ class TireDot {
     required this.yearCode,
     this.company,
   });
-
-  @override
-  String toString() {
-    return '''
-Tire DOT Details:
-Plant Code: $plantCode
-Week: $weekCode
-Year: $yearCode
-Company: ${company?.toString() ?? 'Keine Informationen'}
-''';
-  }
 }

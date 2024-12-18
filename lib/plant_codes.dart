@@ -16,8 +16,6 @@ class PlantCodes {
     if ( code.length != 2 && code.length != 3) return null;
 
     final isNewCode = code.length == 3;
-    print('isNewCode: $isNewCode');
-    print('_plantCodes.length: ${_plantCodes.length}');
 
     final entry = _plantCodes.firstWhere(
       (e) => isNewCode ? e['newCode'] == code : e['oldCode'] == code,
