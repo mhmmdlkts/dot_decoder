@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Bindings initialisieren
-  await PlantCodes.loadPlantCodes();         // JSON-Daten laden
 
   runApp(const MyApp());
 }
@@ -16,8 +15,6 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   void main() async {
-    await PlantCodes.loadPlantCodes();
-
     final dotNumber1 = "DOT 1VR 100WNM 3724";
     final dotNumber2 = "DOT ABC 4567";
     final dotNumber3 = "DOT XYZ 9919"; // Ungültiger Week Code
