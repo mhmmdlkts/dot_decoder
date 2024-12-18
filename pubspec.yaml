@@ -1,0 +1,21 @@
+name: dot_decoder
+description: "Ein Paket zur Dekodierung von Reifen-DOT-Nummern."
+version: 1.0.0
+homepage: "https://github.com/mhmmdlkts/dot_decoder"
+
+environment:
+  sdk: ^3.6.0
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  assets:
+    - assets/dot_plant_codes.json
